@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @route.name%>
+</p>
+
+<% if @route.trains.empty? %> 
+  <p>Route list empty</p>
+<% else %>
+  <% @route.trains.each do |train| %> 
+  <ul>
+    <li><%= train.number %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>

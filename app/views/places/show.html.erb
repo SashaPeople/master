@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @place.ptype%>
+</p>
+
+<% unless @place.vagon.present? %>
+  <p>Vagon unselected</p>
+<% else %>
+  <ul>
+    <li><%= @place.vagon.vtype %></li>
+  </ul>
+<% end %>
+
+
+<%= link_to 'Edit', edit_place_path(@place) %> 
+<%= link_to 'Back', places_path %>

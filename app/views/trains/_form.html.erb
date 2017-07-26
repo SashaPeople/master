@@ -1,0 +1,16 @@
+<%= form_for(@train) do |form| %>
+<%= render 'common/errors', resource: @train %>
+  <div class="field">
+    <%= form.label :number%>
+    <%= form.text_field :number, id: :train_number%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :routes, "Current routes" %>
+    <%= form.collection_select :route_id, Route.all, :id, :name %>
+  </div>
+<% end %>

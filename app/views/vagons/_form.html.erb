@@ -1,0 +1,17 @@
+<%= form_for(@vagon) do |form| %>
+
+  <%= render 'common/errors', resource: @vagon %>
+  <div class="field">
+    <%= form.label :vtype %>
+    <%= form.text_field :vtype, id: :vagon_vtype%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :train, "Current trains" %>
+    <%= form.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @train.number%>
+</p>
+
+<% unless @train.route.present?%>
+  <p>Route selected</p> 
+<% else %>
+  <ul>
+    <li><%= @train.route.name %></li>
+  </ul>
+<% end %>
+
+<% if @train.vagons.empty? %>
+  <p>Trains list empty</p> 
+<% else %> 
+  <% @train.vagons.each do |vagon| %>
+  <ul> 
+    <li><%= "#{vagon.vtype} vagon,  total places = #{vagon.places.count} " %> </li>
+  </ul>
+  <% end %> 
+<% end %>
+
+
+<%= link_to 'Edit', edit_train_path(@train) %> |
+<%= link_to 'Back', trains_path%>
