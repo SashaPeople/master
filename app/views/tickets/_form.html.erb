@@ -8,4 +8,9 @@
   <div class="actions">
     <%= form.submit "#{ @ticket.new_record? ? 'Create' : 'Edit'}" %>
   </div>
+
+  <div class="field">
+    <%= form.label :route %> 
+    <%= form.collection_select :route_id, Route.all, :id, :name %> 
+    <%= form.collection_select :user_id, User.all, :id, :name %> 
 <% end %>

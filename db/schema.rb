@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726085008) do
+ActiveRecord::Schema.define(version: 20170726123101) do
 
   create_table "places", force: :cascade do |t|
     t.string "ptype"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20170726085008) do
     t.datetime "updated_at", null: false
     t.integer "train_id"
     t.integer "user_id"
+    t.integer "route_id"
+    t.index ["route_id"], name: "index_tickets_on_route_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
