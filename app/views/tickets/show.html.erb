@@ -5,5 +5,20 @@
   <%= @ticket.number%>
 </p>
 
+<% unless @ticket.user.present? %>
+  <p>User unselected</p>
+<% else %>
+  <ul>
+    <li><%= @ticket.user.name %></li>
+  </ul>
+<% end %>
+
+<% unless @ticket.route.present? %>
+  <p>Route unselected</p>
+<% else %> 
+  <ul>
+    <li><%= @ticket.route.name %></li>
+  </ul>
+<% end %>
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
