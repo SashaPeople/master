@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20170726123101) do
     t.string "vtype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "train_id"
+    t.index ["train_id"], name: "index_vagons_on_train_id"
   end
 
 end

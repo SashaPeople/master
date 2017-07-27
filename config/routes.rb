@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :tickets
   resources :users
   resources :vagons 
-  resources :places
   get 'welcome/index' 
   root 'welcome#index' 
 end

@@ -13,13 +13,6 @@
   </ul>
 <% end %>
 
-<% if @vagon.places.empty? %>
-  <p>Vagon list empty</p>
-<% else %>
-  <ul>
-    <li><%= @vagon.places.count%></li>
-  </ul>
-<% end %>
 
 <%= link_to 'Edit', edit_vagon_path(@vagon) %> 
 <%= link_to 'Back', vagons_path %>
