@@ -13,6 +13,14 @@
   </ul>
 <% end %>
 
+<% unless @vagon.vnumber.present? %>
+  <p>Vagon havn't serial number</p>
+<% else %>
+  <ul>
+    <li><%= @vagon.vnumber %></li>
+  </ul>
+<% end %>
+
 
 <%= link_to 'Edit', edit_vagon_path(@vagon) %> 
 <%= link_to 'Back', vagons_path %>

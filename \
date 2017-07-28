@@ -19,7 +19,7 @@
   <% @train.vagons.each do |vagon| %>
   <ul> 
     <li><%= "#{vagon.vtype} vagon" %> </li>
-    <li><%= link_to vagon.vnumber, vagon %></li>
+    <li><%= link_to "#{vagon.vnumber}",vagon_path %>
   </ul>
   <% end %> 
 <% end %>
