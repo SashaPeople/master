@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726123101) do
+ActiveRecord::Schema.define(version: 20170801132953) do
 
   create_table "places", force: :cascade do |t|
     t.string "ptype"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170726123101) do
   create_table "railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
+    t.integer "position"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -65,6 +66,13 @@ ActiveRecord::Schema.define(version: 20170726123101) do
 
   create_table "vagons", force: :cascade do |t|
     t.string "vtype"
+    t.integer "vnumber"
+    t.integer "top_seats"
+    t.integer "bottom_seats"
+    t.integer "l_top_seats"
+    t.integer "l_botom_seats"
+    t.integer "seat_place"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "train_id"
