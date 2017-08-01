@@ -8,7 +8,7 @@ class Vagon < ApplicationRecord
   private 
 
   def set_serial_number 
-    set_number = train.vagons.count 
-    self.vnumber ||= set_number + 1
+    ser_number = train.vagons.count 
+    self.vnumber ||= ser_number + 1
   end 
 end
