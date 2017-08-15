@@ -11,9 +11,39 @@
   <% @route.trains.each do |train| %> 
   <ul>
     <li><%= train.number %></li>
-  <% end %>
   </ul>
+  <% end %>
 <% end %>
+<p>
+<% if @route.railway_stations.empty?%>
+  <p>Stations list empty</p> 
+<% else %> 
+  <table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Position</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @route.railway_stations.ordered.each do |station| %>
+    <tr>
+      <td><%= station.name %></td>
+      <td>
+        <%= form_tag update_position_railway_station_path(station), method: :patch do %>
+          <%= number_field_tag :position, station.position_in(@route) %>
+          <%= hidden_field_tag   :route_id, @route.id %>
+          <%= submit_tag "Edit" %> 
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+  </table>
+<% end %>
+</p>
 
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>
+
+
