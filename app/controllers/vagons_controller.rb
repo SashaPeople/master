@@ -1,12 +1,12 @@
 class VagonsController < ApplicationController 
-  before_action :set_vagon, only: [:show, :edit, :update, :destroy] 
+  before_action :set_vagon, only: [:show, :edit, :update, :destroy]
+  before_action :set_train, only: [:create, :new]
 
   def index 
     @vagons = Vagon.all
   end
 
   def show 
-    
   end
 
   def new 
@@ -14,13 +14,12 @@ class VagonsController < ApplicationController
   end
 
   def edit 
-
   end
 
   def create 
-    @vagon = Vagon.new(vagon_params)
+    @vagon = @train.vagons.new(vagon_params)
     if @vagon.save
-      redirect_to @vagon
+      redirect_to @train
     else 
       render :new 
     end
@@ -36,12 +35,16 @@ class VagonsController < ApplicationController
 
   def destroy
     @vagon.destroy
-    redirect_to vagons_path
+    redirect_to @vagon.train
   end
 
   protected 
 
-  def set_vagon 
+  def set_train
+    @train = Train.find(params[:train_id])
+  end
+
+  def set_vagon
     @vagon = Vagon.find(params[:id])
   end
 

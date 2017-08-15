@@ -6,7 +6,7 @@
 </p>
 
 <% unless @train.route.present?%>
-  <p>Route selected</p> 
+  <p>Route unselected</p> 
 <% else %>
   <ul>
     <li><%= @train.route.name %></li>
@@ -16,14 +16,29 @@
 <% if @train.vagons.empty? %>
   <p>Trains list empty</p> 
 <% else %> 
-  <% @train.vagons.each do |vagon| %>
-  <ul> 
-    <li><%= "#{vagon.vtype} vagon" %> </li>
-    <li><%= link_to vagon.vnumber, vagon %></li>
-  </ul>
-  <% end %> 
+  <table>
+    <thead>
+      <tr>
+        <td>Vagon type</td>
+        <td>Vagon number</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @train.vagons.each do |vagon| %>
+        <tr>
+          <td><%= vagon.vtype %></td>
+          <td><%= vagon.vnumber %></td>
+          <td><%= link_to 'show', vagon %></td>
+          <td><%= link_to 'delete', vagon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 <% end %>
 
-
-<%= link_to 'Edit', edit_train_path(@train) %> |
+<%= link_to 'Add vagon', new_train_vagon_path(@train) %>
+<br>
+<%= link_to 'Edit', edit_train_path(@train) %> 
+<br>
 <%= link_to 'Back', trains_path%>

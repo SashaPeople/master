@@ -1,6 +1,7 @@
-<%= form_for(@vagon) do |form| %>
+<%= form_for [@train, @vagon] do |form| %>
 
   <%= render 'common/errors', resource: @vagon %>
+
   <div class="field">
     <%= form.label :vtype, "Vagon type" %>
     <%= form.text_field :vtype, id: :vagon_vtype%>
@@ -10,13 +11,5 @@
     <%= form.submit %>
   </div>
 
-  <div class="field">
-    <%= form.label :train, "Current trains" %>
-    <%= form.collection_select :train_id, Train.all, :id, :number %>
-  </div>
 
-  <div class="field">
-    <%= form.label :vnumber, "Vagon number" %>
-    <%= form.text_field :vnumber, id: :vagon_vnumber%><br>
-  </div>
 <% end %>
