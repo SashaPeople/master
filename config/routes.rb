@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     patch :update_position, on: :member
   end  
 
-  resources :trains
+  resources :trains do 
+    resources :vagons, shallow: true 
+  end
   resources :routes
   resources :tickets
   resources :users

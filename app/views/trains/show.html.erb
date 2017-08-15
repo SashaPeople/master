@@ -16,13 +16,30 @@
 <% if @train.vagons.empty? %>
   <p>Trains list empty</p> 
 <% else %> 
-  <% @train.vagons.each do |vagon| %>
-  <ul> 
-    <li><%= "#{vagon.vtype} vagon" %> </li>
-  </ul>
-  <% end %> 
+    <table>
+      <thead> 
+        <tr>
+          <td>Vagon type</td>
+          <td>Options</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @train.vagons.each do |vagon| %>
+          <tr>
+            <td>
+              <%= "#{vagon.vtype}" %> 
+            </td>
+            <td>
+              <%= link_to "Edit", edit_vagon_path %>
+              <%= link_to "Delete", vagon, method: :delete, data: { confirm: "Are you shure?" }%>
+            </td>
+          </tr>
+        <% end %> 
+      </tbody>
+    </table>
 <% end %>
-
+<br>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path%>
+<%= link_to 'Add vagon', new_train_vagon_path(@train) %>
