@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 20170815095419) do
+ActiveRecord::Schema.define(version: 20170815152224) do
 
 
   create_table "places", force: :cascade do |t|
@@ -28,11 +28,8 @@ ActiveRecord::Schema.define(version: 20170815095419) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "railway_stations_routes", force: :cascade do |t|
-    t.integer "railway_station_id"
-    t.integer "route_id"
-    t.integer "position"
-  end
+# Could not dump table "railway_stations_routes" because of following StandardError
+#   Unknown type 'sting' for column 'departure_time'
 
   create_table "routes", force: :cascade do |t|
     t.string "name"

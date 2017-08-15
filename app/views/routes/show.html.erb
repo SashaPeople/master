@@ -23,6 +23,8 @@
     <tr>
       <td>Name</td>
       <td>Position</td>
+      <td>Departure time</td>
+      <td>Arrival time</td>
     </tr>
   </thead>
   <tbody>
@@ -36,6 +38,20 @@
           <%= submit_tag "Edit" %> 
         <% end %>
       </td>
+      <td>
+        <%= form_tag update_departure_time_railway_station_path(station), method: :patch do %>
+          <%= text_field_tag :departure_time, station.departure_time_in(@route)%>
+          <%= hidden_field_tag :route_id, @route.id %>
+          <%= submit_tag "Edit" %>
+        <% end %>
+      </td>
+      <td>
+        <%= form_tag update_arrival_time_railway_station_path(station), method: :patch do %>
+          <%= text_field_tag :arrival_time, station.arrival_time_in(@route)%>
+          <%= hidden_field_tag :route_id, @route.id %>
+          <%= submit_tag "Edit" %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>
@@ -43,31 +59,6 @@
 <% end %>
 </p>
 
-<% if @route.railway_stations.empty? %> 
-  <p>Stations list empty</p>
-<% else %>
-  <table>
-    <thead>
-      <tr>
-        <td>Name</td>
-        <td>Position</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @route.railway_stations.ordered.each do |station| %>
-        <tr>
-          <td><%= station.name %> </td>
-          <td>
-            <%= form_tag update_position_railway_station_path(station), method: :patch do %>
-              <%= number_field_tag :position, station.position_in(@route) %>
-              <%= hidden_field_tag   :route_id, @route.id %>
-              <%= submit_tag       "Edit" %>
-            <% end %>
-          </td>
-      <% end %> 
-    </tbody>
-  </table> 
-<% end %>
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>
 
