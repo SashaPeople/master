@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @train.number%>
+</p>
+
+<% unless @train.route.present?%>
+  <p>Route selected</p> 
+<% else %>
+  <ul>
+    <li><%= @train.route.name %></li>
+  </ul>
+<% end %>
+
+<% if @train.vagons.empty? %>
+  <p>Trains list empty</p> 
+<% else %> 
+    <table>
+      <thead> 
+        <tr>
+          <td>Vagon type</td>
+          <td>Options</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @train.vagons.each do |vagon| %>
+          <tr>
+            <td>
+              <%= "#{vagon.vtype}" %> 
+            </td>
+            <td>
+              <%= link_to "Edit", edit_admin_vagon_path %>
+              <%= link_to "Delete", [:admin, vagon], method: :delete, data: { confirm: "Are you shure?" }%>
+            </td>
+          </tr>
+        <% end %> 
+      </tbody>
+    </table>
+<% end %>
+<br>
+
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path%>
+<%= link_to 'Add vagon', new_admin_train_vagon_path(@train) %>
