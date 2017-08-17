@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     patch :update_departure_time, on: :member
     patch :update_arrival_time,   on: :member
   end  
-
   resources :trains do 
     resources :vagons, shallow: true 
   end

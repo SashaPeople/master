@@ -1,6 +1,6 @@
 class VagonsController < ApplicationController 
-  before_action :set_train, only: [ :new, :create ]
-  before_action :set_vagon, only: [ :update, :show, :edit, :destroy ]
+  before_action :set_vagon, only: [:show, :edit, :update, :destroy]
+  before_action :set_train, only: [:create, :new]
 
   def new 
     @vagon = Vagon.new 
@@ -9,12 +9,15 @@ class VagonsController < ApplicationController
   def show 
   end
 
-  def edit 
+  def new 
+    @vagon = Vagon.new 
   end
 
-  def create
+  def edit 
+  end
+  
+  def create 
     @vagon = @train.vagons.new(vagon_params)
-
     if @vagon.save
       redirect_to @train
     else 
@@ -36,6 +39,14 @@ class VagonsController < ApplicationController
   end
 
   protected 
+
+  def set_train
+    @train = Train.find(params[:train_id])
+  end
+
+  def set_vagon
+    @vagon = Vagon.find(params[:id])
+  end
 
   def vagon_params
     params.require(:vagon).permit(:number, :vtype)
