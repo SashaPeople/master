@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+<%= form_for [@train, @vagon] do |form| %>
+=======
 <%= form_for [@train, @vagon]  do |form| %>
+>>>>>>> master_yoda
 
   <%= render 'common/errors', resource: @vagon %>
+
   <div class="field">
-    <%= form.label :vtype %>
+    <%= form.label :vtype, "Vagon type" %>
     <%= form.text_field :vtype, id: :vagon_vtype%>
   </div>
 
@@ -10,8 +15,5 @@
     <%= form.submit %>
   </div>
 
-  <div class="field">
-    <%= form.label :train, "Current trains" %>
-    <%= form.collection_select :train_id, Train.all, :id, :number %>
-  </div>
+
 <% end %>

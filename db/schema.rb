@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170817114833) do
+
 
   create_table "places", force: :cascade do |t|
     t.string "ptype"
@@ -59,6 +61,7 @@ ActiveRecord::Schema.define(version: 20170817114833) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -70,10 +73,18 @@ ActiveRecord::Schema.define(version: 20170817114833) do
     t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
   end
 
   create_table "vagons", force: :cascade do |t|
     t.string "vtype"
+    t.integer "vnumber"
+    t.integer "top_seats"
+    t.integer "bottom_seats"
+    t.integer "l_top_seats"
+    t.integer "l_botom_seats"
+    t.integer "seat_place"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "train_id"
