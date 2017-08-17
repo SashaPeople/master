@@ -3,7 +3,12 @@
   <%= render 'common/errors', resource: @user %>
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :user_name%>
+    <%= form.text_field :name, id: :user_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :passport_data %>
+    <%= form.text_field :passport_data, id: :user_passport_data %>
   </div>
 
   <div class="actions">

@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   end
   resources :routes
   resources :tickets
-  resources :users
-  resources :vagons 
+  resources :users do 
+    resources :tickets, shallow: true
+  end
   resource :search, only: [:new, :edit, :show]
   get 'welcome/index' 
   root 'welcome#index' 
