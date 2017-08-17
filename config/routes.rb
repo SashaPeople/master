@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  #devise_for :installs
   resources :railway_stations do 
     patch :update_position, on: :member
     patch :update_departure_time, on: :member
