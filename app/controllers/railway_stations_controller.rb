@@ -1,6 +1,5 @@
 class RailwayStationsController < ApplicationController 
 
-  before_action :authenticate_user!
   before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_position, :update_departure_time, :update_arrival_time]
 
   def index 
